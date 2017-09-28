@@ -1,0 +1,46 @@
+{
+	"name": "react-app-state",
+	"version": "0.0.1",
+	"description": "A global state manager for React.",
+	"author": "Rodrigo Cesar de Freitas Dias <rcesar@gmail.com>",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rodrigocfd/react-app-state.git"
+	},
+	"bugs": {
+		"url": "https://github.com/rodrigocfd/react-app-state/issues"
+	},
+	"homepage": "https://github.com/rodrigocfd/react-app-state#readme",
+	"main": "dist/AppState.js",
+	"unpkg": "dist/index.min.js",
+	"scripts": {
+		"build": "rimraf dist && babel src --out-dir dist",
+		"minify": "uglifyjs dist/*.js --comments --compress --mangle -o dist/index.min.js",
+		"prepublish": "npm run build && npm run minify",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"babel-polyfill": "^6.26.0",
+		"react": "^15.6.1"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-plugin-transform-class-properties": "^6.24.1",
+		"babel-plugin-transform-object-rest-spread": "^6.26.0",
+		"babel-plugin-transform-react-jsx": "^6.24.1",
+		"babel-preset-es2015": "^6.24.1",
+		"rimraf": "^2.6.2",
+		"uglify-js": "^3.1.2"
+	},
+	"babel": {
+		"plugins": [
+			"transform-class-properties",
+			"transform-object-rest-spread",
+			"transform-react-jsx"
+		],
+		"presets": [
+			"es2015"
+		]
+	}
+}
