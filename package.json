@@ -1,7 +1,7 @@
 {
 	"name": "react-app-state",
-	"version": "0.0.1",
-	"description": "A global state manager for React.",
+	"version": "0.0.2",
+	"description": "A simple state manager for React.",
 	"author": "Rodrigo Cesar de Freitas Dias <rcesar@gmail.com>",
 	"license": "MIT",
 	"repository": {
@@ -17,7 +17,7 @@
 	"scripts": {
 		"build": "rimraf dist && babel src --out-dir dist",
 		"minify": "uglifyjs dist/*.js --comments --compress --mangle -o dist/index.min.js",
-		"prepublish": "npm run build && npm run minify",
+		"prepare": "npm run build && npm run minify",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
