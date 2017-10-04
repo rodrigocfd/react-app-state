@@ -7,6 +7,20 @@
 
 import React from 'react';
 
+export function subscribe(...stores) {
+	return function(WrappedComponent) {
+		let FinalComponent = class AppStateInjected extends React.Component {
+			render() {
+				return <WrappedComponent {...this.props}/>;
+			}
+		};
+		for (const store of stores) {
+			FinalComponent = store.subscribe(FinalComponent);
+		}
+		return FinalComponent;
+	}
+}
+
 export default class AppState {
 	constructor(propsAndValues) {
 		this._propsAndValues = propsAndValues; // each prop with initial value
