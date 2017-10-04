@@ -9,11 +9,7 @@ import React from 'react';
 
 export function subscribe(...stores) {
 	return function(WrappedComponent) {
-		let FinalComponent = class AppStateInjected extends React.Component {
-			render() {
-				return <WrappedComponent {...this.props}/>;
-			}
-		};
+		let FinalComponent = WrappedComponent;
 		for (const store of stores) {
 			FinalComponent = store.subscribe(FinalComponent);
 		}

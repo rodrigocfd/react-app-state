@@ -7,6 +7,7 @@ A simple state manager for React.
 * [Extending AppState](#extending-appstate)
 * [Computed values](#computed-values)
 * [Multiple subscriptions](#multiple-subscriptions)
+* [@subscribe decorator](#subscribe-decorator)
 * [Full API documentation](#full-api-documentation)
 
 ## Installation
@@ -177,6 +178,39 @@ nameOwner.subscribe(
 
 The component will receive the variables of all those managers via `props`. Just beware name collisions: if two variables have the same name, the last one will prevail.
 
+## @subscribe decorator
+
+If you're using decorators on your project, you can alternatively subscribe to an AppState manager instance like this:
+
+```js
+// --- DisplayComponent.js ---
+import React, {Component} from 'react';
+import {subscribe} from 'react-app-state';
+import nameOwner from './nameOwner';
+
+@subscribe(nameOwner)
+class DisplayComponent extends Component {
+  render() {
+    return (
+      <div>
+        My name is {this.props.myName}.
+      </div>
+    );
+  }
+}
+
+export default DisplayComponent;
+```
+
+This decorator is pure syntactic sugar: internally, `@subscribe` simply calls the `subscribe` method of the AppState manager, so it's the same thing.
+
+And multiple subscriptions can be done as well:
+
+```js
+@subscribe(nameOwner, anotherState, yetAnotherManager)
+class DisplayComponent {
+```
+
 ## Full API documentation
 
 `AppState(propsAndValues)` – constructor. Instantiates AppState and initializes the values to be kept.
@@ -186,3 +220,5 @@ The component will receive the variables of all those managers via `props`. Just
 `AppState.get(propName)` – retrieves a value imperatively.
 
 `AppState.set(propsAndValues, callback)` – updates the internal state, propagating the new values to the subscribed components. The 1st argument contains the values to be updated. The 2nd argument is a callback to be called after the state is set, just like an ordinary `setState` call works.
+
+`@subscribe(managers)` – subscribe a class to one or more AppState managers.
