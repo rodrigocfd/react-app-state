@@ -1,6 +1,6 @@
 {
 	"name": "react-app-state",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "A simple state manager for React.",
 	"author": "Rodrigo Cesar de Freitas Dias <rcesar@gmail.com>",
 	"license": "MIT",
@@ -22,7 +22,7 @@
 	},
 	"dependencies": {
 		"babel-polyfill": "^6.26.0",
-		"react": "^15.6.1"
+		"react": "^16.4.1"
 	},
 	"devDependencies": {
 		"babel-cli": "^6.26.0",
